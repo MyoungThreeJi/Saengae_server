@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pad, Ingredient_info
+from .models import Pad
 
 
 # Register your models here.
@@ -8,4 +8,4 @@ class PadAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Pad, PadAdmin)
-admin.site.register(Ingredient_info)
+# admin.site.register(Ingredient_info)

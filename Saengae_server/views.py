@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from .models import Pad, Ingredient_info
-from .serializers import PadSerializer, IngredientInfoSerializer
+from .models import Pad
+from .serializers import PadSerializer
 
 
 # Create your views here.

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Saengae_server',
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
