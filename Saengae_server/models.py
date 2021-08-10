@@ -7,6 +7,9 @@ class Pad(models.Model):
     name = models.CharField(max_length=30)
     image = models.URLField()
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         db_table = 'pad'
 
@@ -17,6 +20,9 @@ class Ingredient_info(models.Model):
     igd_enName = models.CharField(max_length=20)
     igd_detection = models.FloatField()
     igd_sideEffect = models.TextField()
+
+    def __str__(self):
+        return self.igd_koName
 
     class Meta:
         db_table = 'ingredient_information'
