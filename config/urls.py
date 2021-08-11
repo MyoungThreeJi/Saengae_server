@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework.permissions import AllowAny
@@ -21,5 +22,6 @@ urlpatterns = [
     path(r'redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
 
     path('admin/', admin.site.urls),
-    path('v1/', include('Saengae_server.urls'))
+    path('v1/', include('Saengae_server.urls')),
+    path("", RedirectView.as_view(url='/admin/', permanent=True)),  # 기본주소 입력했을 때, /admin로 넘겨줌.
 ]

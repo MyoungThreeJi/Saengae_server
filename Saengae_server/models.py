@@ -4,15 +4,14 @@ from django.db import models
 # 생리대:성분 = 1:N 관계
 class Pad(models.Model):
     id = models.BigAutoField(primary_key=True)
-    manufacturer = models.CharField(max_length=10)
-    name = models.CharField(max_length=30)
-    image = models.CharField(max_length=200)
+    manufacturer = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
+    image = models.CharField(max_length=300)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        managed = False
         db_table = 'pad'
 
 # class Ingredient_info(models.Model):
