@@ -1,16 +1,23 @@
-from .models import Pad
+from .models import Pad, Ingredient, Detection
 from rest_framework import serializers
 
 
-# class IngredientInfoSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Ingredient_info
-#         fields = ['igd_koName', 'igd_enName', 'ing_detection', 'igd_sideEffect']
+class IngredientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ingredient
+        fields = ('id', 'name', 'enName', 'sideEffect')
+
+
+class DetectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Detection
+        fields = ('pad_id', 'ingredient_id', 'detection')
 
 
 class PadSerializer(serializers.ModelSerializer):
-    # Ingredients = IngredientInfoSerializer(many=True, read_only=True)
+    queryset = Detection.objects.all()
+    Ingredients = IngredientSerializer(queryset, many=True, read_only=True)
 
     class Meta:
         model = Pad
-        fields = '__all__'
+        fields = ('id', 'name', 'manufacturer', 'image', 'ingredients')

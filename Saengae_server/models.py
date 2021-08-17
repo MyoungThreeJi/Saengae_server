@@ -3,10 +3,9 @@ from django.db import models
 
 # 생리대:성분 = 1:N 관계
 class Ingredient(models.Model):
-    # pad_name = models.ForeignKey(Pad, on_delete=models.CASCADE)
     id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=20)
-    enName = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
+    enName = models.CharField(max_length=50)
     sideEffect = models.TextField()
 
     def __str__(self):
@@ -19,9 +18,10 @@ class Ingredient(models.Model):
 class Pad(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    manufacturer = models.CharField(max_length=20)
+    manufacturer = models.CharField(max_length=50)
     image = models.CharField(max_length=300)
     ingredients = models.ManyToManyField(Ingredient, through='Detection')
+    # through_fields = ("pad_id", "ingredient_id"),  # (소스모델, 타겟모델) 순서
 
     def __str__(self):
         return self.name
