@@ -13,6 +13,7 @@ class Ingredient(models.Model):
 
     class Meta:
         db_table = 'ingredient'
+        ordering = ['-id']
 
 
 class Pad(models.Model):
@@ -28,6 +29,7 @@ class Pad(models.Model):
 
     class Meta:
         db_table = 'pad'
+        ordering = ['-id']
 
 
 class Detection(models.Model):
@@ -35,9 +37,8 @@ class Detection(models.Model):
     ingredient_id = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     detection = models.FloatField()
 
-    def __str__(self):
-        return self.detection
-
     class Meta:
         db_table = 'detection'
+        ordering = ['-pad_id']
+
 

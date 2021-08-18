@@ -4,5 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('pad/', PadList.as_view()),
-    path('pad/<int:pk>/', PadDetail.as_view())
+    path('pad/<int:pk>/', PadDetail.as_view()),
+
+    # path('pad/<int:pk>/', IngredientDetail.as_view()),
 ]
