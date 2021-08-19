@@ -10,12 +10,14 @@ class DetectionInline(admin.TabularInline):
 
 class IngredientAdmin(admin.ModelAdmin):
     inlines = (DetectionInline,)
-    # list_display = ['id', 'manufacturer', 'name', 'image']
+    list_display = ['id', 'name', 'enName']
+    readonly_fields = ['id', 'name', 'enName', 'sideEffect']
 
 
 class PadAdmin(admin.ModelAdmin):
     inlines = (DetectionInline,)
-    # list_display = ['id', 'manufacturer', 'name', 'image']
+    list_display = ['id', 'manufacturer', 'name']
+    readonly_fields = ['id', 'manufacturer', 'name', 'image']
 
 
 admin.site.register(Pad, PadAdmin)

@@ -16,7 +16,7 @@ class DetectionSerializer(serializers.ModelSerializer):
 
 class PadSerializer(serializers.ModelSerializer):
     queryset = Detection.objects.all()
-    Ingredients = IngredientSerializer(queryset, many=True, read_only=True)
+    ingredients = IngredientSerializer(queryset, many=True, read_only=True)
 
     class Meta:
         model = Pad

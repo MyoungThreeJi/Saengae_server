@@ -23,10 +23,13 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 django.setup()
 
 # csv 파일 경로
-CSV_PATH = 'pad_info.csv'
+CSV_PATH_1 = 'pad_info.csv'
+CSV_PATH_2 = 'ingredient_info.csv'
+CSV_PATH_3 = 'pad_ingredient.csv'
+
 
 # encoding 설정 필요
-with open(CSV_PATH, newline='', encoding='utf-8-sig') as csvfile:
+with open(CSV_PATH_1, newline='', encoding='utf-8-sig') as csvfile:
     data_reader = csv.DictReader(csvfile)
 
     for row in data_reader:
@@ -36,4 +39,31 @@ with open(CSV_PATH, newline='', encoding='utf-8-sig') as csvfile:
             manufacturer=row['manufacturer'],
             name=row['name'],
             image=row['image'],
+        )
+
+# encoding 설정 필요
+with open(CSV_PATH_2, newline='', encoding='CP949') as csvfile:
+    data_reader = csv.DictReader(csvfile)
+
+    for row in data_reader:
+        # print(row)
+        Ingredient.objects.create(
+            id=row['ingredient_id'],
+            name=row['name'],
+            enName=row['en_name'],
+            sideEffect=row['side_effect'],
+        )
+
+# encoding 설정 필요
+with open(CSV_PATH_3, newline='', encoding='CP949') as csvfile:
+    data_reader = csv.DictReader(csvfile)
+
+    for row in data_reader:
+        # print(row)
+        padId = Pad.objects.get(id=row['pad_id'])
+        ingredientId = Ingredient.objects.get(id=row['ingredient_id'])
+        Detection.objects.create(
+            pad_id=padId,
+            ingredient_id=ingredientId,
+            detection=row['detection'],
         )
