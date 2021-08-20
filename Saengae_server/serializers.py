@@ -5,7 +5,7 @@ from rest_framework import serializers
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ('id', 'name', 'enName', 'sideEffect')
+        fields = ('id', 'name', 'enName', 'average', 'max', 'min', 'sideEffect')
 
 
 class DetectionSerializer(serializers.ModelSerializer):

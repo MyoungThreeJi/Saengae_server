@@ -6,6 +6,9 @@ class Ingredient(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
     enName = models.CharField(max_length=50)
+    average = models.FloatField()
+    max = models.FloatField()
+    min = models.FloatField()
     sideEffect = models.TextField()
 
     def __str__(self):

@@ -11,7 +11,7 @@ class DetectionInline(admin.TabularInline):
 class IngredientAdmin(admin.ModelAdmin):
     inlines = (DetectionInline,)
     list_display = ['id', 'name', 'enName']
-    readonly_fields = ['id', 'name', 'enName', 'sideEffect']
+    readonly_fields = ['id', 'name', 'enName', 'average', 'max', 'min', 'sideEffect']
 
 
 class PadAdmin(admin.ModelAdmin):

@@ -28,7 +28,7 @@ CSV_PATH_2 = 'ingredient_info.csv'
 CSV_PATH_3 = 'pad_ingredient.csv'
 
 
-# encoding 설정 필요
+# Pad
 with open(CSV_PATH_1, newline='', encoding='utf-8-sig') as csvfile:
     data_reader = csv.DictReader(csvfile)
 
@@ -41,7 +41,7 @@ with open(CSV_PATH_1, newline='', encoding='utf-8-sig') as csvfile:
             image=row['image'],
         )
 
-# encoding 설정 필요
+# Ingredient
 with open(CSV_PATH_2, newline='', encoding='CP949') as csvfile:
     data_reader = csv.DictReader(csvfile)
 
@@ -51,10 +51,13 @@ with open(CSV_PATH_2, newline='', encoding='CP949') as csvfile:
             id=row['ingredient_id'],
             name=row['name'],
             enName=row['en_name'],
+            average=row['average'],
+            max=row['max'],
+            min=row['min'],
             sideEffect=row['side_effect'],
         )
 
-# encoding 설정 필요
+# Detection
 with open(CSV_PATH_3, newline='', encoding='CP949') as csvfile:
     data_reader = csv.DictReader(csvfile)
 
