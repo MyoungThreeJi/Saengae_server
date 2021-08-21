@@ -1,4 +1,4 @@
-from .models import Pad, Ingredient, Detection
+from .models import Pad, Ingredient, Detection, Review
 from rest_framework import serializers
 
 
@@ -11,12 +11,18 @@ class IngredientSerializer(serializers.ModelSerializer):
 class DetectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Detection
-        fields = ('pad_id', 'ingredient_id', 'detection')
+        fields = ('pad', 'ingredient', 'detection')
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ('pad', 'star1', 'star2', 'star3', 'star4', 'content', 'created', 'updated')
 
 
 class PadSerializer(serializers.ModelSerializer):
-    queryset = Detection.objects.all()
-    ingredients = IngredientSerializer(queryset, many=True, read_only=True)
+    queryset_igd = Detection.objects.all()
+    ingredients = IngredientSerializer(queryset_igd, many=True) #read_only=True
 
     class Meta:
         model = Pad

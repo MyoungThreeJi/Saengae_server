@@ -66,7 +66,7 @@ with open(CSV_PATH_3, newline='', encoding='CP949') as csvfile:
         padId = Pad.objects.get(id=row['pad_id'])
         ingredientId = Ingredient.objects.get(id=row['ingredient_id'])
         Detection.objects.create(
-            pad_id=padId,
-            ingredient_id=ingredientId,
+            pad=padId,
+            ingredient=ingredientId,
             detection=row['detection'],
         )
