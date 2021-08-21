@@ -35,7 +35,12 @@ class DetectionDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DetectionSerializer
 
 
-class Review(generics.ListCreateAPIView):
+class ReviewList(generics.ListCreateAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+
+class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
 

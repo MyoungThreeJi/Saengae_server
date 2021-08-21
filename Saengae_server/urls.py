@@ -8,7 +8,8 @@ urlpatterns = [
     path('ingredient/', IngredientList.as_view()),
     path('ingredient/<int:pk>', IngredientDetail.as_view()),
     path('detectionInfo/', DetectionList.as_view()),
-    path('review/', Review.as_view()),
+    path('review/', ReviewList.as_view()),
+    path('review/<int:pk>', ReviewDetail.as_view()),
     # path('detectionInfo/<int:pk>', DetectionDetail.as_view()),
 
 ]
