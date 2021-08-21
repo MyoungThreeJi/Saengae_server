@@ -48,7 +48,7 @@ class Detection(models.Model):
 
 
 class Review(models.Model):
-    pad = models.ForeignKey(Pad, on_delete=models.CASCADE, blank=True)
+    pad = models.ForeignKey(Pad, on_delete=models.CASCADE)
     star1 = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)]) # 착용감
     star2 = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)]) # 흡수력
     star3 = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)]) # 샘방지
@@ -62,4 +62,3 @@ class Review(models.Model):
 
     class Meta:
         db_table = 'review'
-        ordering = ['-pad']
