@@ -22,7 +22,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class PadSerializer(serializers.ModelSerializer):
     queryset_igd = Detection.objects.all()
-    ingredients = IngredientSerializer(queryset_igd, many=True) #read_only=True
+    ingredients = IngredientSerializer(queryset_igd, many=True, required=False) #read_only=True
 
     class Meta:
         model = Pad
