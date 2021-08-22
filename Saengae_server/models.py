@@ -25,7 +25,7 @@ class Pad(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
     manufacturer = models.CharField(max_length=50)
-    image = models.CharField(max_length=300)
+    image = models.ImageField(null=True, blank=True)
     ingredients = models.ManyToManyField(Ingredient, through='Detection')
     # through_fields = ("pad_id", "ingredient_id"),  # (소스모델, 타겟모델) 순서
 

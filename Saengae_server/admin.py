@@ -1,4 +1,7 @@
 from django.contrib import admin
+from django.utils.html import format_html
+from django.utils.safestring import mark_safe
+
 from .models import Pad, Ingredient, Detection, Review
 
 
@@ -21,8 +24,12 @@ class IngredientAdmin(admin.ModelAdmin):
 
 class PadAdmin(admin.ModelAdmin):
     inlines = (DetectionInline, ReviewInline,)
-    list_display = ['id', 'manufacturer', 'name']
-    # readonly_fields = ['id', 'manufacturer', 'name', 'image']
+    list_display = ['id', 'image_tag', 'manufacturer', 'name']
+    # readonly_fields = ['id', 'manufacturer', 'name']
+
+    def image_tag(self, obj):
+        return format_html('<img src="{}" width="50px;"/>'.format(obj.image))
+    image_tag.short_description = 'Image'
 
 
 class ReviewAdmin(admin.ModelAdmin):
