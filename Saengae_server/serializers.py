@@ -15,9 +15,10 @@ class DetectionSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    # review_create = serializers.
     class Meta:
         model = Review
-        fields = ('pad', 'star1', 'star2', 'star3', 'star4', 'content', 'created', 'updated')
+        fields = ('userName', 'userImage', 'pad', 'star1', 'star2', 'star3', 'star4', 'content', 'created', 'updated')
 
 
 class PadSerializer(serializers.ModelSerializer):

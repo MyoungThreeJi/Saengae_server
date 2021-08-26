@@ -42,31 +42,31 @@ with open(CSV_PATH_1, newline='', encoding='utf-8-sig') as csvfile:
         )
 
 # Ingredient
-# with open(CSV_PATH_2, newline='', encoding='CP949') as csvfile:
-#     data_reader = csv.DictReader(csvfile)
-#
-#     for row in data_reader:
-#         # print(row)
-#         Ingredient.objects.create(
-#             id=row['ingredient_id'],
-#             name=row['name'],
-#             enName=row['en_name'],
-#             average=row['average'],
-#             max=row['max'],
-#             min=row['min'],
-#             sideEffect=row['side_effect'],
-#         )
-#
-# # Detection
-# with open(CSV_PATH_3, newline='', encoding='CP949') as csvfile:
-#     data_reader = csv.DictReader(csvfile)
-#
-#     for row in data_reader:
-#         # print(row)
-#         padId = Pad.objects.get(id=row['pad_id'])
-#         ingredientId = Ingredient.objects.get(id=row['ingredient_id'])
-#         Detection.objects.create(
-#             pad=padId,
-#             ingredient=ingredientId,
-#             detection=row['detection'],
-#         )
+with open(CSV_PATH_2, newline='', encoding='CP949') as csvfile:
+    data_reader = csv.DictReader(csvfile)
+
+    for row in data_reader:
+        # print(row)
+        Ingredient.objects.create(
+            id=row['ingredient_id'],
+            name=row['name'],
+            enName=row['en_name'],
+            average=row['average'],
+            max=row['max'],
+            min=row['min'],
+            sideEffect=row['side_effect'],
+        )
+
+# Detection
+with open(CSV_PATH_3, newline='', encoding='CP949') as csvfile:
+    data_reader = csv.DictReader(csvfile)
+
+    for row in data_reader:
+        # print(row)
+        padId = Pad.objects.get(id=row['pad_id'])
+        ingredientId = Ingredient.objects.get(id=row['ingredient_id'])
+        Detection.objects.create(
+            pad=padId,
+            ingredient=ingredientId,
+            detection=row['detection'],
+        )

@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from django.utils.safestring import mark_safe
 
 from .models import Pad, Ingredient, Detection, Review
 
@@ -33,8 +32,12 @@ class PadAdmin(admin.ModelAdmin):
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ['id', 'pad', 'created', 'updated']
+    list_display = ['id', 'userName', 'image_tag2', 'pad', 'created', 'updated']
     # readonly_fields = ['pad', 'star1', 'star2', 'star3', 'star4', 'content', 'created', 'updated']
+
+    def image_tag2(self, obj):
+        return format_html('<img src="{}" width="50px;"/>'.format(obj.userImage))
+    image_tag2.short_description = 'userImage'
 
 
 admin.site.register(Pad, PadAdmin)

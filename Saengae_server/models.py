@@ -25,7 +25,7 @@ class Pad(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
     manufacturer = models.CharField(max_length=50)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField()
     ingredients = models.ManyToManyField(Ingredient, through='Detection')
     # through_fields = ("pad_id", "ingredient_id"),  # (소스모델, 타겟모델) 순서
 
@@ -48,6 +48,8 @@ class Detection(models.Model):
 
 
 class Review(models.Model):
+    userName = models.CharField(max_length=10, null=True, blank=True)
+    userImage = models.ImageField(null=True, blank=True)
     pad = models.ForeignKey(Pad, on_delete=models.CASCADE)
     star1 = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)]) # 착용감
     star2 = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)]) # 흡수력

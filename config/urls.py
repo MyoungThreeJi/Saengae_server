@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
@@ -24,4 +26,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('v1/', include('Saengae_server.urls')),
     path("", RedirectView.as_view(url='/admin/', permanent=True)),  # 기본주소 입력했을 때, /admin로 넘겨줌.
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
