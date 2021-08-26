@@ -48,7 +48,8 @@ class ReviewCreate(generics.ListCreateAPIView):
     serializer_class = ReviewSerializer
 
     def perform_create(self, serializer):
-        serializer.save(userName=randomUser()) # self.request.user
+        serializer.save(userName=randomUser(), userImage="/static/Saengae_server/woman{0}.png".format(random.randint(1, 9)))
+        # self.request.user
 
 
 class ReviewList(generics.ListAPIView):
