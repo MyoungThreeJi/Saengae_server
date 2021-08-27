@@ -18,7 +18,7 @@ class Ingredient(models.Model):
 
     class Meta:
         db_table = 'ingredient'
-        ordering = ['-id']
+        ordering = ['id']
 
 
 class Pad(models.Model):
@@ -27,6 +27,8 @@ class Pad(models.Model):
     manufacturer = models.CharField(max_length=50)
     image = models.ImageField()
     ingredients = models.ManyToManyField(Ingredient, through='Detection')
+    safeScore = models.IntegerField()
+    rank = models.IntegerField()
     # through_fields = ("pad_id", "ingredient_id"),  # (소스모델, 타겟모델) 순서
 
     def __str__(self):
@@ -34,7 +36,7 @@ class Pad(models.Model):
 
     class Meta:
         db_table = 'pad'
-        ordering = ['-id']
+        ordering = ['rank']
 
 
 class Detection(models.Model):

@@ -39,10 +39,12 @@ with open(CSV_PATH_1, newline='', encoding='utf-8-sig') as csvfile:
             manufacturer=row['manufacturer'],
             name=row['name'],
             image=row['image'],
+            safeScore=row['safety_score'],
+            rank=row['rank'],
         )
 
 # Ingredient
-with open(CSV_PATH_2, newline='', encoding='CP949') as csvfile:
+with open(CSV_PATH_2, newline='', encoding='utf-8-sig') as csvfile:
     data_reader = csv.DictReader(csvfile)
 
     for row in data_reader:
@@ -70,3 +72,4 @@ with open(CSV_PATH_3, newline='', encoding='CP949') as csvfile:
             ingredient=ingredientId,
             detection=row['detection'],
         )
+

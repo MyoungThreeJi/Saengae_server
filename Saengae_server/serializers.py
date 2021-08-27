@@ -27,4 +27,4 @@ class PadSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Pad
-        fields = ('id', 'name', 'manufacturer', 'image', 'ingredients')
+        fields = ('id', 'name', 'manufacturer', 'image', 'ingredients', 'rank', 'safeScore')
