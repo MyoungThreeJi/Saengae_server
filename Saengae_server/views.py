@@ -2,8 +2,8 @@ import random
 
 from rest_framework import generics
 
-from .models import Pad, Ingredient, Detection, Review
-from .serializers import PadSerializer, IngredientSerializer, DetectionSerializer, ReviewSerializer
+from .models import Pad, Ingredient, Detection, Review, Map
+from .serializers import PadSerializer, IngredientSerializer, DetectionSerializer, ReviewSerializer, MapSerializer
 
 
 def randomUser():
@@ -43,7 +43,6 @@ class DetectionDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DetectionSerializer
 
 
-
 class ReviewCreate(generics.ListCreateAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
@@ -61,4 +60,9 @@ class ReviewCreate(generics.ListCreateAPIView):
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+
+
+class MapList(generics.ListCreateAPIView):
+    queryset = Map.objects.all()
+    serializer_class = MapSerializer
 

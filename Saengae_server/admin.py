@@ -18,7 +18,7 @@ class ReviewInline(admin.TabularInline):
 class IngredientAdmin(admin.ModelAdmin):
     inlines = (DetectionInline,)
     list_display = ['id', 'name', 'enName']
-    # readonly_fields = ['id', 'name', 'enName', 'average', 'max', 'min', 'sideEffect']
+    readonly_fields = ['id', 'name', 'enName', 'average', 'max', 'min', 'sideEffect']
 
 
 class PadAdmin(admin.ModelAdmin):
@@ -41,7 +41,8 @@ class ReviewAdmin(admin.ModelAdmin):
 
 
 class MapAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'type', 'address']
+    list_display = ['id', 'name', 'address', 'type']
+    readonly_fields = ['name', 'address', 'longitude', 'latitude', 'Phone', 'type']
 
 
 admin.site.register(Pad, PadAdmin)

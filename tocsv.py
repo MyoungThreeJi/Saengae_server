@@ -26,47 +26,62 @@ django.setup()
 CSV_PATH_1 = 'pad_info.csv'
 CSV_PATH_2 = 'ingredient_info.csv'
 CSV_PATH_3 = 'pad_ingredient.csv'
+CSV_PATH_4 = 'Seoul_emergency_placement.csv'
 
 
-# Pad
-with open(CSV_PATH_1, newline='', encoding='utf-8-sig') as csvfile:
+# # Pad
+# with open(CSV_PATH_1, newline='', encoding='utf-8-sig') as csvfile:
+#     data_reader = csv.DictReader(csvfile)
+#
+#     for row in data_reader:
+#         # print(row)
+#         Pad.objects.create(
+#             id=row['pad_id'],
+#             manufacturer=row['manufacturer'],
+#             name=row['name'],
+#             image=row['image'],
+#         )
+#
+# # Ingredient
+# with open(CSV_PATH_2, newline='', encoding='CP949') as csvfile:
+#     data_reader = csv.DictReader(csvfile)
+#
+#     for row in data_reader:
+#         # print(row)
+#         Ingredient.objects.create(
+#             id=row['ingredient_id'],
+#             name=row['name'],
+#             enName=row['en_name'],
+#             average=row['average'],
+#             max=row['max'],
+#             min=row['min'],
+#             sideEffect=row['side_effect'],
+#         )
+#
+# # Detection
+# with open(CSV_PATH_3, newline='', encoding='CP949') as csvfile:
+#     data_reader = csv.DictReader(csvfile)
+#
+#     for row in data_reader:
+#         # print(row)
+#         padId = Pad.objects.get(id=row['pad_id'])
+#         ingredientId = Ingredient.objects.get(id=row['ingredient_id'])
+#         Detection.objects.create(
+#             pad=padId,
+#             ingredient=ingredientId,
+#             detection=row['detection'],
+#         )
+
+# 비상생리대 배치 화장실
+with open(CSV_PATH_4, newline='', encoding='utf-8-sig') as csvfile:
     data_reader = csv.DictReader(csvfile)
 
     for row in data_reader:
-        # print(row)
-        Pad.objects.create(
-            id=row['pad_id'],
-            manufacturer=row['manufacturer'],
-            name=row['name'],
-            image=row['image'],
-        )
-
-# Ingredient
-with open(CSV_PATH_2, newline='', encoding='CP949') as csvfile:
-    data_reader = csv.DictReader(csvfile)
-
-    for row in data_reader:
-        # print(row)
-        Ingredient.objects.create(
-            id=row['ingredient_id'],
-            name=row['name'],
-            enName=row['en_name'],
-            average=row['average'],
-            max=row['max'],
-            min=row['min'],
-            sideEffect=row['side_effect'],
-        )
-
-# Detection
-with open(CSV_PATH_3, newline='', encoding='CP949') as csvfile:
-    data_reader = csv.DictReader(csvfile)
-
-    for row in data_reader:
-        # print(row)
-        padId = Pad.objects.get(id=row['pad_id'])
-        ingredientId = Ingredient.objects.get(id=row['ingredient_id'])
-        Detection.objects.create(
-            pad=padId,
-            ingredient=ingredientId,
-            detection=row['detection'],
+        Map.objects.create(
+            name=row['기관명'],
+            type=1,
+            address=row['주소'],
+            longitude=row['Longitude'],
+            latitude=row['Latitude'],
+            Phone=row['사무실 연락처'],
         )
