@@ -1,4 +1,4 @@
-from .models import Pad, Ingredient, Detection, Review
+from .models import Pad, Ingredient, Detection, Review, Map
 from rest_framework import serializers
 
 
@@ -28,3 +28,9 @@ class PadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pad
         fields = ('id', 'name', 'manufacturer', 'image', 'ingredients', 'rank', 'safeScore')
+
+
+class MapSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Map
+        fields = ('name', 'type', 'address', 'longitude', 'latitude', 'Phone')

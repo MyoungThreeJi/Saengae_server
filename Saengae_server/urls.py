@@ -11,5 +11,6 @@ urlpatterns = [
     path('detectionInfo/<int:pk>', DetectionDetail.as_view()),
     path('review/', ReviewCreate.as_view()),
     path('review/<int:pk>', ReviewDetail.as_view()),
+    path('MapList/', DetectionList.as_view()),
 
 ]

@@ -2,8 +2,6 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
-# 생리대:성분 = 1:N 관계
-
 class Ingredient(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)

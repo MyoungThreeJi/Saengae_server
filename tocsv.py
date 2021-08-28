@@ -26,6 +26,7 @@ django.setup()
 CSV_PATH_1 = 'pad_info.csv'
 CSV_PATH_2 = 'ingredient_info.csv'
 CSV_PATH_3 = 'pad_ingredient.csv'
+CSV_PATH_4 = 'Seoul_emergency_placement.csv'
 
 
 # Pad
@@ -73,3 +74,16 @@ with open(CSV_PATH_3, newline='', encoding='CP949') as csvfile:
             detection=row['detection'],
         )
 
+# 비상생리대 배치 화장실
+with open(CSV_PATH_4, newline='', encoding='utf-8-sig') as csvfile:
+    data_reader = csv.DictReader(csvfile)
+
+    for row in data_reader:
+        Map.objects.create(
+            name=row['기관명'],
+            type=1,
+            address=row['주소'],
+            longitude=row['Longitude'],
+            latitude=row['Latitude'],
+            Phone=row['사무실 연락처'],
+        )
