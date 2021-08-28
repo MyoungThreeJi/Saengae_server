@@ -66,3 +66,19 @@ class Review(models.Model):
 
     class Meta:
         db_table = 'review'
+
+
+class Map(models.Model):
+    name = models.CharField(max_length=250)
+    type = models.IntegerField()
+    address = models.CharField(max_length=1000)
+    longitude = models.DecimalField(max_digits=15, decimal_places=8)
+    latitude = models.DecimalField(max_digits=15, decimal_places=8)
+    Phone = models.CharField(max_length=11, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'map'
+

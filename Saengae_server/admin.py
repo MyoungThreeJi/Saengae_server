@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Pad, Ingredient, Detection, Review
+from .models import Pad, Ingredient, Detection, Review, Map
 
 
 # Register your models here.
@@ -40,8 +40,13 @@ class ReviewAdmin(admin.ModelAdmin):
     image_tag2.short_description = 'userImage'
 
 
+class MapAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'type', 'address']
+
+
 admin.site.register(Pad, PadAdmin)
 admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Review, ReviewAdmin)
+admin.site.register(Map, MapAdmin)
 
 
