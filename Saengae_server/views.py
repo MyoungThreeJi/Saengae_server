@@ -16,6 +16,7 @@ def randomUser():
 class PadList(generics.ListCreateAPIView):
     queryset = Pad.objects.all()
     serializer_class = PadSerializer
+    # safeScore = Pad.objects.get(id=).ingredients.all().aggregate(Avg)
 
 
 class PadDetail(generics.RetrieveUpdateDestroyAPIView):

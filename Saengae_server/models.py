@@ -25,8 +25,8 @@ class Pad(models.Model):
     manufacturer = models.CharField(max_length=50)
     image = models.ImageField()
     ingredients = models.ManyToManyField(Ingredient, through='Detection')
-    safeScore = models.IntegerField()
-    rank = models.IntegerField()
+    safeScore = models.IntegerField(null=True, blank=True)
+    rank = models.IntegerField(null=True, blank=True)
     # through_fields = ("pad_id", "ingredient_id"),  # (소스모델, 타겟모델) 순서
 
     def __str__(self):
@@ -41,6 +41,7 @@ class Detection(models.Model):
     pad = models.ForeignKey(Pad, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     detection = models.FloatField()
+    safeScore = models.FloatField(null=True, blank=True)
 
     class Meta:
         db_table = 'detection'

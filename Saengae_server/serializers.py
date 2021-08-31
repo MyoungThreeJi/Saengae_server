@@ -1,3 +1,5 @@
+from django.db.models import Avg
+
 from .models import Pad, Ingredient, Detection, Review, Map
 from rest_framework import serializers
 
@@ -11,7 +13,7 @@ class IngredientSerializer(serializers.ModelSerializer):
 class DetectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Detection
-        fields = ('pad', 'ingredient', 'detection')
+        fields = ('pad', 'ingredient', 'detection', 'ingredient_info')
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -24,6 +26,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 class PadSerializer(serializers.ModelSerializer):
     queryset_igd = Detection.objects.all()
     ingredients = IngredientSerializer(queryset_igd, many=True, required=False) #read_only=True
+    # ingredients.objects.aggregate(safeScore=Avg('성분별 점수'))
 
     class Meta:
         model = Pad

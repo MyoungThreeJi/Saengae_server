@@ -23,7 +23,7 @@ class IngredientAdmin(admin.ModelAdmin):
 
 class PadAdmin(admin.ModelAdmin):
     inlines = (DetectionInline, ReviewInline,)
-    list_display = ['rank', 'id', 'image_tag', 'manufacturer', 'name', 'safeScore']
+    list_display = ['rank', 'id', 'image_tag', 'manufacturer', 'name']
     # readonly_fields = ['id', 'manufacturer', 'name']
 
     def image_tag(self, obj):

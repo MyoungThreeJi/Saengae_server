@@ -2,11 +2,10 @@ import csv
 import os
 import django
 import sys
+from Saengae_server.models import *
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 django.setup()
-
-from Saengae_server.models import *
 
 
 # 현재 디렉토리 경로 표시
@@ -40,8 +39,8 @@ with open(CSV_PATH_1, newline='', encoding='utf-8-sig') as csvfile:
             manufacturer=row['manufacturer'],
             name=row['name'],
             image=row['image'],
-            safeScore=row['safety_score'],
-            rank=row['rank'],
+            # safeScore=row['safety_score'],
+            # rank=row['rank'],
         )
 
 # Ingredient
