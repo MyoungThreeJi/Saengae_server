@@ -1,6 +1,7 @@
 import random
 
 from rest_framework import generics
+from rest_framework.filters import SearchFilter
 
 from .models import Pad, Ingredient, Detection, Review, Map
 from .serializers import PadSerializer, IngredientSerializer, DetectionSerializer, ReviewSerializer, MapSerializer
@@ -16,6 +17,9 @@ def randomUser():
 class PadList(generics.ListCreateAPIView):
     queryset = Pad.objects.all()
     serializer_class = PadSerializer
+
+    filter_backends = [SearchFilter]
+    search_fields = ('name', )
 
 
 class PadDetail(generics.RetrieveUpdateDestroyAPIView):

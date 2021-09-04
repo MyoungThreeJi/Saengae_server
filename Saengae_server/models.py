@@ -23,7 +23,7 @@ class Pad(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
     manufacturer = models.CharField(max_length=50)
-    image = models.ImageField()
+    image = models.CharField(max_length=500)
     ingredients = models.ManyToManyField(Ingredient, through='Detection')
     safeScore = models.IntegerField()
     rank = models.IntegerField()
